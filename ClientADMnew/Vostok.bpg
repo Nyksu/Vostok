@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = ClientADM.exe VostokManager.exe vs_born.exe Vostok1srv.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+ClientADM.exe: ClientADM.dpr
+  $(DCC)
+
+VostokManager.exe: ..\clientManager\VostokManager.dpr
+  $(DCC)
+
+vs_born.exe: ..\bron\vs_born.dpr
+  $(DCC)
+
+Vostok1srv.exe: ..\server\Vostok1srv.dpr
+  $(DCC)
+
+
